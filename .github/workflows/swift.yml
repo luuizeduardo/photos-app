@@ -1,0 +1,17 @@
+name: Swift
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Start xcodebuild test
+      run: xcodebuild clean test -project "PhotosApp.xcodeproj" -scheme "PhotosApp" -destination "platform=iOS Simulator,name=iPhone 8"
